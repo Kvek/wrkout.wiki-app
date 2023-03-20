@@ -1,0 +1,6 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  height: 55px;
+  width: 55px;
+}
