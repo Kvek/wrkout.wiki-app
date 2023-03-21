@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
+  initialLoad: false,
+  darkMode: true,
 };
 
 const appSlice = createSlice({
@@ -11,9 +13,16 @@ const appSlice = createSlice({
     setLoadingState: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    setInitialLoadState: (state, action: PayloadAction<boolean>) => {
+      state.initialLoad = action.payload;
+    },
+    setDarkModeState: (state, action: PayloadAction<boolean>) => {
+      state.darkMode = action.payload;
+    },
   },
 });
 
-export const { setLoadingState } = appSlice.actions;
+export const { setLoadingState, setInitialLoadState, setDarkModeState } =
+  appSlice.actions;
 
 export const appReducer = appSlice.reducer;

@@ -1,7 +1,4 @@
 import Head from "next/head";
-import s from "@styles/Home.module.css";
-import { Navbar } from "@components/Navbar";
-import { Loader } from "@components/Loader";
 
 export default function Home() {
   return (
@@ -11,11 +8,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="./light.ico" />
       </Head>
-
-      <main className={s.main}>
-        <Navbar />
-        <Loader />
-      </main>
     </>
   );
 }

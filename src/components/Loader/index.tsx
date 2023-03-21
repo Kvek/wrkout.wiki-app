@@ -28,5 +28,9 @@ export const Loader = () => {
 
   if (!loading) return null;
 
-  return <div className={s.container}>{squat ? <Squat /> : <Stand />}</div>;
+  return (
+    <div className={s.container}>
+      <div className={s.loadingContainer}>{squat ? <Squat /> : <Stand />}</div>
+    </div>
+  );
 };
