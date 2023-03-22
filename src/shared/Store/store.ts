@@ -1,11 +1,12 @@
-import logger from "redux-logger";
+import logger from 'redux-logger';
 
-import { configureStore } from "@reduxjs/toolkit";
-import { appReducer } from "@app/slices/app-slice";
+import { configureStore } from '@reduxjs/toolkit';
+
+import { appReducer } from 'shared/Store/slices/app-slice';
 
 export const store = configureStore({
-  reducer: { app: appReducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: { app: appReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,9 +1,73 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import s from "./styles.module.css";
+import { Squat, Stand } from '@components/Icons';
 
-import { Squat, Stand } from "@components/Icons";
-import { useAppSelector } from "@app/hooks";
+import { useAppSelector } from 'shared/hooks';
+import { quotes, QuoteType } from 'shared/quotes';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  align-items: center;
+  background: ${({ theme }) => theme.Background.colors.default};
+  bottom: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+`;
+
+const InnerContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  width: 600px;
+`;
+
+const LoadingContainer = styled.div`
+  align-items: flex-end;
+  display: flex;
+  height: 70px;
+  width: 70px;
+`;
+
+const Copy = styled.div`
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  user-select: none;
+  white-space: normal;
+
+  code {
+    margin-top: 10px;
+  }
+`;
+
+const Quotes = () => {
+  const [randomQuote, setRandomQuote] = useState<QuoteType | undefined>();
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setRandomQuote(quotes[randomIndex]);
+  }, []);
+
+  if (!randomQuote) return null;
+
+  const { person, quote } = randomQuote;
+
+  return (
+    <Copy>
+      <p>&#8220;{`${quote}`}&#8221;</p>
+      <code>-{person}</code>
+    </Copy>
+  );
+};
 
 export const Loader = () => {
   const loading = useAppSelector(({ app: { loading } }) => loading);
@@ -29,8 +93,11 @@ export const Loader = () => {
   if (!loading) return null;
 
   return (
-    <div className={s.container}>
-      <div className={s.loadingContainer}>{squat ? <Squat /> : <Stand />}</div>
-    </div>
+    <Container>
+      <InnerContainer>
+        <LoadingContainer>{squat ? <Squat /> : <Stand />}</LoadingContainer>
+        <Quotes />
+      </InnerContainer>
+    </Container>
   );
 };

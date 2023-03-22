@@ -1,18 +1,20 @@
-import { Loader } from "@components/Loader";
-import { Navbar } from "@components/Navbar";
-import React, { ReactNode } from "react";
-import s from "./styles.module.css";
+import { Loader } from '@components/Loader';
+import { Navbar } from '@components/Navbar';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+import { ChildrenInterface } from 'shared/types';
+import styled from 'styled-components';
 
-export const Layout = ({ children }: LayoutProps) => (
+const Container = styled.div`
+  padding: 1rem;
+`;
+
+export const Layout = ({ children }: ChildrenInterface) => (
   <>
-    <div className={s.container}>
+    <Container>
       <Navbar />
       <main>{children}</main>
-    </div>
+    </Container>
+
     <Loader />
   </>
 );
