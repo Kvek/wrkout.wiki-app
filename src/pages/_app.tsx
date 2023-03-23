@@ -1,5 +1,7 @@
 import { Provider } from 'react-redux';
 
+import { Analytics } from '@vercel/analytics/react';
+
 import { Layout } from '@components/Layout';
 import { Theme } from '@components/Theme';
 
@@ -11,6 +13,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <Theme>
         <Layout>
+          <Analytics />
           <Component {...pageProps} />
         </Layout>
       </Theme>
