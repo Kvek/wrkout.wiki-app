@@ -10,6 +10,7 @@ const Container = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.Background.colors.default};
   bottom: 0;
+  color: ${({ theme }) => theme.Typography.colors.primary};
   display: flex;
   height: 100%;
   justify-content: center;
@@ -32,7 +33,8 @@ const InnerContainer = styled.div`
 const LoadingContainer = styled.div`
   align-items: flex-end;
   display: flex;
-  height: 70px;
+  max-height: 70px;
+  min-height: 70px;
   width: 70px;
 `;
 
@@ -40,8 +42,7 @@ const Copy = styled.div`
   align-items: flex-end;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  user-select: none;
+  margin-top: 30px;
   white-space: normal;
 
   code {
